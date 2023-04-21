@@ -1,0 +1,48 @@
+
+#******************** Settings ************************
+
+*** Settings ***
+Documentation	Issue Test scenario. CRUD Operation: Create, Read, Update, Delete
+
+# TODO: Write Precondition and Postcondition, Tags 
+
+Pre Condition	Open Browser, You have already created a user and signed in, Project must be created by the user before 
+Post Condition	Close All Browsers
+Tags	Issues, TS-1-Issue(For Jira project management issue reference)
+
+#******************* Common Variables ********************
+
+
+*** Variables ***
+
+IssueURL: https://gitlab.com/group-slug-here/project-slug-here/-/issues/new
+
+
+
+#******************** Test Cases *************************
+
+*** Test Case ***
+
+# Positive Test
+
+Create an issue
+	Navigate To Issue Page IssueUrl
+	Create issue,
+ 	Update name of issue, 
+	Create second issue with privious updated name
+    Delete first issue
+	Valide that message is showing 'Issue created just now.'
+
+
+# Negative Test
+
+Error message Should Be Visible After Creating issue with blank title
+	Navigate To Issue Page IssueUrl
+	Create issue,
+ 	Leave the title form Empty
+	Error message is showing 'This field is required.'
+
+
+
+
+
